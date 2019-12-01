@@ -1,0 +1,32 @@
+<div class="container">
+
+      <h1 class="white-color">Bookings</h1>
+          <div *ngIf="this.bookingService.bookingEmpty">
+              <div class="alert alert-warning" role="alert">
+                  No Bookings Available !
+                </div>
+          </div>
+    <div *ngIf="!this.bookingService.bookingEmpty">
+      <ul class="list-group">
+        <li class="list-group-item" >
+          <div class="dol-col ">{{this.bookingService.booking.vehicle.name}}
+            <!-- <span class="price-color right">{{cart.price | currency:'INR'}}</span> -->
+          </div>
+          <p>
+            <a (click)="removeFromCart(this.bookingService.booking.vehicle.id)"><i
+              class="material-icons right dol-col">delete_forever</i></a>
+          </p>
+        </li>
+        <li class="list-group-item" ><div class="dol-col "><p class="big-text">Total<span class="price-color right">
+          {{this.bookingService.booking.price | currency:'INR'}}
+        </span></p>
+          </div></li>
+          <li class="list-group-item" ><div class="dol-col "><button (click)="onSubmit()" class="btn btn-outline-success right">Pay Now</button><button (click)="removeFromCart(this.bookingService.booking.vehicle.id)" class="btn btn-outline-danger ">Cancel Payment</button>
+            </div></li>
+
+        </ul>
+      </div>
+        </div>
+ 
+ 
+

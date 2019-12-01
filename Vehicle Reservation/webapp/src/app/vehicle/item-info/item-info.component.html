@@ -1,0 +1,194 @@
+<body>
+  <div class="container-fluid">
+<div class="card mr-3 mt-3 ml-3 h-5">
+    <img class="card-img-top"
+        src={{vehicleItem.image}}
+        alt="Product">
+    <div class="row">
+        <div class=" ml-1 mt-2">
+            <h4 class="card-title">&nbsp; {{vehicleItem.name}}</h4>
+        </div>
+        <div class="ml-auto mr-4 mt-2">
+            <h4 class="price-color">{{vehicleItem.price | currency:'INR'}}/day </h4>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-8">
+            
+                <div class="card-text">
+                    <i class="material-icons type-color">power</i>{{vehicleItem.type}}
+                  </div>
+        
+            </div>
+        <div class="ml-auto mr-4">
+          <i class="material-icons seater-color" >event_seat</i>
+          <span >{{vehicleItem.seater}}</span>
+          
+        </div>
+        </div>
+        <div *ngIf="this.vehicleService.addedToCart && this.vehicleService.cartAddedId==vehicleItem.id">
+            <div class="row mt-4">
+              <div class="col-12">
+                <div class="alert alert-success">Item added
+                  successfully.</div>
+              </div>
+            </div>
+          </div>
+        <div class="row ">
+          <div class="col-6">
+                  <span class="badge badge-success" *ngIf="vehicleItem.active">Active</span>&nbsp;
+                  <span class="badge badge-danger" *ngIf="!vehicleItem.active">InActive</span>&nbsp;
+          </div>
+         
+          <div class="ml-auto" >
+                <button type="button" class="btn btn-color mt-4" *ngIf="this.authService.loggedIn && this.clickname != vehicleItem.name"   (click)="moreDetails(vehicleItem)" >
+                    <!-- (click)="addToFavoritesClicked.emit(vehicleItem.id)" -->
+                    
+                    <span>More Details</span>
+                </button>
+                <button type="button" class="btn btn-color mt-4" *ngIf="this.authService.loggedIn && this.clickname == vehicleItem.name "   (click)="lessDetails()" ><span>
+                  <!-- (click)="addToFavoritesClicked.emit(vehicleItem.id)" -->
+                  
+                  Less Details
+                </span></button>
+                
+          </div>
+        </div>
+        <div *ngIf="this.clickname==vehicleItem.name">
+        <div class="row mt-1">
+          <div class="col-6">
+            <p >Vehicle No.</p>
+          </div>
+          <div class="ml-auto">
+           <p>{{vehicleItem.vehicleNo}}</p>
+          </div>
+        </div>
+  
+        <div class="row mt-1">
+          <div class="col-6">
+            <p >Branch</p>
+          </div>
+          <div class="ml-auto">
+           <p><i class="material-icons branch-color">
+              store_mall_directory
+              </i>{{vehicleItem.branch}}</p>
+          </div>
+        </div>
+  
+        <div class="row mt-1">
+          <div class="col-5">
+            <p >Insurance Date</p>
+          </div>
+          <div class="ml-auto">
+           <p><i class="material-icons date-color">
+              calendar_today
+              </i>
+              {{vehicleItem.insuranceExpDate | date:'mediumDate'}}</p>
+          </div>
+        </div>
+        <div class="row mt-1">
+          <div class="col-6">
+            <p >Last Service Date</p>
+          </div>
+          <div class="ml-auto">
+           <p><i class="material-icons date-color">
+              calendar_today
+              </i>{{vehicleItem.lastServiceDate|date:'mediumDate'}}</p>
+          </div>
+        </div>
+        <div class="row mt-1">
+          <div class="col-6">
+            <p >Service Due Date</p>
+          </div>
+          <div class="ml-auto">
+           <p><i class="material-icons date-color">
+              calendar_today
+              </i>{{vehicleItem.serviceDueDate|date:'mediumDate'}}</p>
+          </div>
+        </div>
+        <div *ngIf="!this.bookingService.bookingEmpty">
+            <div class="row mt-4">
+                <div class="col-12">
+                  <div class="alert alert-secondary">You already have a booking</div>
+                </div>
+              </div>
+  
+        </div>
+        <div *ngIf="!this.authService.isAdmin && dateAvailable">
+            <div class="row mt-4">
+                <div class="col-12">
+                  <div class="alert alert-danger">This vehicle is currently not  Insured.</div>
+                </div>
+              </div>
+          </div>
+          <div *ngIf="!this.authService.isAdmin && !this.vehicleItem.status">
+              <div class="row mt-4">
+                  <div class="col-12">
+                    <div class="alert alert-danger">This vehicle is already booked.</div>
+                  </div>
+                </div>
+            </div>
+          <div *ngIf="!vehicleItem.active && !this.authService.isAdmin && !dateAvailable">
+              <div class="row mt-4">
+                  <div class="col-12">
+                    <div class="alert alert-danger">This vehicle is currently not active.</div>
+                  </div>
+                </div>
+            </div>
+      
+        <div *ngIf="!this.authService.isAdmin && this.bookingService.bookingEmpty && vehicleItem.status && vehicleItem.active && !dateAvailable">
+        <form [formGroup]="BookForm" (submit)="onSubmit(vehicleItem.id)" >
+            <div class=" heading form-check">
+                <div class="row">
+                  <label for="startingDate">Start Booking Date</label></div>
+                  <div class="row">
+                  <input type="date" class="form-control " id="startingDate"
+                  formControlName="startingDate" [formControl]="startingDate" placeholder="dd/mm/yyyy" ></div>
+                <div class ="text-danger" *ngIf="startingDate.invalid && startingDate.errors.required && startingDate.touched" class="invalid">
+                  Start Date is required.
+                </div> 
+                
+              </div>
+  
+              <div class=" heading form-check ">
+                <div class="row">
+            
+                  <label class="" for="endingDate">End Booking Date</label></div>
+                  <div class="row">
+                <input type="date" class="form-control " id="endingDate"
+                  formControlName="endingDate" [formControl]="endingDate" placeholder="dd/mm/yyyy" ></div>
+                <div class ="text-danger" *ngIf="endingDate.invalid && endingDate.errors.required && endingDate.touched" class="invalid">
+                  End Date is required.
+  
+                </div> 
+              </div>
+  
+              <div class="row mt-4 heading" *ngIf="!this.authService.isAdmin">
+                  <div class="col-6"> 
+                    <button type="submit" class="btn btn-color white" [disabled]="!BookForm.valid">Book Now!</button>
+                  </div>
+                </div>
+              
+        </form>
+      </div>
+      <div class="row mt-4 launch-size" *ngIf="this.authService.isAdmin">
+          <div class="col-5">
+            <div></div>
+          </div>
+          <div class="ml-auto">
+            <a [routerLink]="['/edit-food-item',vehicleItem.id]" >
+              <button type="button" class="btn btn-color ">
+                <i class="material-icons white">edit </i>Edit
+              </button>
+            </a>
+  
+          </div>
+        </div>
+  
+      </div>
+    </div>
+</div>
+</div>
+</body>
+

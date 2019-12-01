@@ -1,0 +1,34 @@
+<div class="container">
+    <h2 class="heading ml-auto mt-2 mb-4 white-color">Pending Details</h2></div>
+    <div class="row  ml-2 mr-2 " *ngIf="pendingUserList?.length == 0">
+    
+            <div class="col-lg-9   mx-auto">
+    
+                <div class="alert alert-success ">No pending applications.</div>
+    
+            </div>
+    
+        </div>
+      <div class="row list-group ml-2 mr-2 " *ngIf="pendingUserList?.length != 0">
+          
+                <div  class="col-lg-9 list-group-item  mx-auto" *ngFor="let user of pendingUserList">
+                    <div class="row" >
+                        <h4 class="grey paddingl">{{user.firstname}}</h4>
+                    </div>
+                    <div class="row">
+                        <div class="ml-auto">
+                            <button (click)="approve(user)" class="btn btn-outline-success"> <i
+                                class="material-icons ">check </i>Approve
+                </button>&nbsp; &nbsp;
+
+
+
+                <button (click)="deny(user)" class="btn btn-outline-danger"> <i
+                                class="material-icons red ">close </i>Deny
+                            </button>
+                        </div>
+                    </div>
+                </div>
+    
+                </div>
+    

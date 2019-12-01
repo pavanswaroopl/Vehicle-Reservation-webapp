@@ -1,0 +1,8 @@
+
+
+<div class="card-deck">
+
+  <ul *ngFor="let Item of vehicleItem">
+  <app-item-info [vehicleItem]="Item" (addToCartClicked)="this.vehicleService.addToCart($event)"></app-item-info>
+  </ul>
+</div>

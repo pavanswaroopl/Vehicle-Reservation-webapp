@@ -1,0 +1,139 @@
+<div class="container-fluid mb-5 pb-5">
+  <div class="row justify-content-center">
+    <div class="card ml-2 mr-2 mt-4 shadow">
+      <div class="pt-4 pl-3 ">
+        <h2>Signup</h2>
+      </div>
+      <form [formGroup]="signUpForm" (submit)="this.userService.addUser(signUpForm.value)">
+        <div class="card-body">
+          <div class="row mt-md-0">
+            <div class="alert-danger col-12 px-auto" *ngIf="!this.userService.userExist">
+              Member Id already exists
+            </div>
+            <div class="col-md-6 col-xs-12">
+              <label for="username">Member Id</label>
+              <input type="text" class="form-control" placeholder="Enter usernmae" formControlName="username"
+                id="username">
+              <div class="text-danger" *ngIf="username.invalid && username.errors.required && username.touched">MemberId
+                is required</div>
+                <div class="text-danger" *ngIf="username.errors.minLength && username.errors.maxLength">MemberId
+                    should be between 4-20 characters</div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-md-6  mt-0 mt-md-0">
+              <label for="firstname">First Name</label>
+              <input type="text" class="form-control" placeholder="Enter First Name" formControlName="firstname"
+                id="firstname">
+              <div class="text-danger" *ngIf="firstname.invalid && firstname.errors.required && firstname.touched">First
+                Name is required</div>
+                <div class="text-danger" *ngIf="firstname.errors.minLength && firstname.errors.maxLength">First
+                    Name should'nt exceed 50 characters</div>
+            </div>
+            <div class="col-md-6  mt-3 mt-md-0">
+              <label for="lastname">Last Name</label>
+              <input type="text" class="form-control" placeholder="Enter Last Name" formControlName="lastname"
+                id="lastname">
+              <div class="text-danger" *ngIf="lastname.invalid && lastname.errors.required && lastname.touched">Last
+                Name is required</div>
+            </div>
+          </div>
+          <div class="form-group row">
+              <div class="col-md-6  mt-0 mt-md-0">
+                  <label for="password">Password</label>
+                  <input type="password" class="form-control" placeholder="Enter Password" formControlName="password"
+                    id="password">
+                    <div class="text-danger"
+                    *ngIf="signUpForm.get('password').touched && signUpForm.get('password').hasError('required')"><sup>*</sup>Password is required</div>              
+                    <div class="text-danger" *ngIf="signUpForm.get('password').dirty && signUpForm.get('password').hasError('minlength')"><sup>*</sup>Password must be atleast 8 characters</div>
+
+                </div>
+            <div class="col-md-6  mt-0 mt-md-0">
+              <label for="confirmPassword">Confirm Password</label>
+              <input type="password" class="form-control" placeholder="Enter Confirm Password"
+                formControlName="confirmPassword" id="confirmPassword">
+              <div class="text-danger"
+                *ngIf="confirmPassword.invalid && confirmPassword.errors.required && confirmPassword.touched">Confirm
+                the Password</div>
+              <div class="text-danger" *ngIf="signUpForm.get('confirmPassword').hasError('nomatch')">Password and
+                Confirm Password do not match</div>
+            </div>
+          </div>
+
+          <div class="form-group row">
+              <div class="col-md-6  mt-0 mt-md-0">
+                  <label for="age"><b>Age</b></label>
+              <input required type="text" name="age" 
+               id="age" class="form-control" pattern="^([1-9]|[1-8][0-9]|9[0-9]|100)$" placeholder="Enter age" formControlName="age">
+              <span class="help-block text-danger" *ngIf="age.invalid && age.touched">
+                     Age is Required
+              </span>
+                </div>
+            <div class="col-md-6  mt-0 mt-md-0">
+              <div class="form-check-inline">
+                  <label class="form-check-label">
+                      <label for="gender"><b>Enter your Gender</b></label><br>
+                      <input type="radio" class="form-check-input" id="Male" name="gender" value="Male" formControlName="gender" >Male <br>
+                      <input type="radio" class="form-check-input" id="Female" name="gender"  value="Female" formControlName="gender">Female<br/><br>
+                  </label>
+                  <div class="text-danger" *ngIf="signUpForm.get('gender').touched && signUpForm.get('gender').hasError('required')">
+                      <sup>*</sup>Please select your gender
+                   </div>
+
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group row">
+              <div class="col-md-6  mt-0 mt-md-0">
+                  <label for="contact"><b>Contact Number</b></label>
+                            <input  required type="tel" name="contact" formControlName="contact"
+                             id="contact" class="form-control" placeholder="Enter your contact number" >
+                             <div class="text-danger" *ngIf="signUpForm.get('contact').touched && signUpForm.get('contact').hasError('required')">Contact
+                                is required</div>
+                          <div class="text-danger" *ngIf="signUpForm.get('contact').dirty && signUpForm.get('contact').hasError('pattern')">Contact
+                                can  have only numbers</div>    
+                                <div class="text-danger"  *ngIf="signUpForm.get('contact').dirty && signUpForm.get('contact').hasError('maxlength')">Contact cannot exceed 10 characters</div>                                 
+                                <div class="text-danger"  *ngIf="signUpForm.get('contact').dirty && signUpForm.get('contact').hasError('minlength')">Contact cannot exceed 10 characters</div>                                 
+
+                </div>
+            <div class="col-md-6  mt-0 mt-md-0">
+              <label for="email"><b>E-Mail ID</b></label>
+              <input required type="email" name="email" formControlName="email"
+               id="email" class="form-control" pattern="^[a-z0-9][-a-z0-9._]+@([-a-z0-9]+\.)+[a-z]{2,5}$" placeholder="Enter your Email ID" >
+              <span class="help-block text-danger" *ngIf="email.invalid && email.touched">
+                      Email is Required
+                        </span>
+            </div>
+          </div>
+
+          <div class="form-group row">
+              <div class="col-md-6  mt-0 mt-md-0">
+                  <label for="branch"><b>Branch</b></label>
+                                <input required type="text" name="branch" formControlName="branch"
+                                     id="lastname" class="form-control" pattern="[A-Za-z ]+" placeholder="Enter branch" >
+                                     <span class="help-block text-danger" *ngIf="branch.invalid && branch.touched">
+                                         Branch is Required
+                                      </span>
+                </div>
+            <!-- <div class="col-md-6  mt-0 mt-md-0">
+              <label for="roles"><b>Role</b></label>
+    
+                            <select class="form-control" id="roles" name="roles" formControlName="roles">
+                                <option>User</option>
+                                <option>Admin</option>
+    
+                            </select>
+            </div> -->
+          </div>
+
+          <div class="form-group row mt-4 ">
+            <div class="col-6 mr-auto">
+              <button type="submit" class="btn edit" [disabled]="!signUpForm.valid" >Signup</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

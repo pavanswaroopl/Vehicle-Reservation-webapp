@@ -1,0 +1,152 @@
+.navbar{
+    background-color: orangered;
+}
+.material-icons{
+    vertical-align:middle;
+    color:white;
+    
+}
+.vertical-align{
+vertical-align: middle;
+color:white;
+}
+.align{
+    vertical-align: text-top;
+}
+.edit{
+    background-color: orangered;
+    color:white;
+}
+.right{
+    float: right;
+
+}
+.blue{
+    color:blue;
+}
+
+.price-color{
+    color: brown;
+}
+.white-color{
+color:white;
+}
+.dol-col{
+    color:dimgray;
+}
+.jumbotron{
+    background-image: url("https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80");
+    background-size: cover;
+    background-blend-mode:normal;
+    background-position: center;
+    height: auto;
+    width: 100%;
+}
+.black-color{
+    color:black;
+}
+.save-color{
+    background-color:orangered;
+    color:white;
+    
+}
+.edit-alert{
+    background-color: aquamarine;
+    color:mediumseagreen;
+}
+
+.login-card{
+    width: 35rem;
+    max-height: 35rem;
+}
+.big-text{
+    font-size: 25px;
+    color:black;
+}
+.validate .invalid-feedback
+{
+    display: block;
+}
+/* .btn.btn-color, .btn.btn-color:hover, .btn.btn-color:active, .btn.btn-color:link
+	{
+	background-color:darkblue;
+	border-color:dimgray;
+	color: #ffffff;
+} */
+
+.seater-color{
+    color:grey;
+}
+.type-color{
+    color:grey;
+}
+body{
+  
+        margin-bottom: 61px;
+   
+   }
+.date-color{
+    color:teal;
+}
+.branch-color{
+    color:darkslategray;
+}
+.card-img-top{
+    max-width: 24rem;
+    height:17rem;
+
+    object-fit: none; /* Do not scale the image */
+    object-position: center; /* Center the image within the element */
+    width: 100%;
+    /* max-height: 250px; */
+    margin-bottom: 1rem;
+
+}
+
+.card{
+    max-height: 100rem;
+    width: 20rem;
+    border:none;
+    background-color: rgba(245, 245, 245, 0.4);
+}
+.btn-color {
+    border-radius: 2px;
+    background-color: darkblue;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 18px;
+    padding: 10px;
+    width: 150px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 2px;
+  }
+  
+  .btn-color span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+  }
+  
+  .btn-color span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+  }
+  
+  .btn-color:hover span {
+    padding-right: 25px;
+  }
+  
+  .btn-color:hover span:after {
+    opacity: 1;
+    right: 0;
+  }
+  .white{
+      color:white;
+  }
