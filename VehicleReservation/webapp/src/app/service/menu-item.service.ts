@@ -17,40 +17,27 @@ export class MenuItemService {
 
 
   constructor(private http: HttpClient,private authservice:AuthServiceService,) { }
-//   getAllMenuItems():Observable<any>{
-//   //   console.log("hola")
-//   //   let username='user'
-//   //   let password='pwd'
-//   //   const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(username + ':' + password) });
-//   //   return this.httpClient.get<foodItem[]>(`${environment.baseUrl}`+'menu-items',{headers})
-//     if(this.authservice.loggedIn){
-//       this.foodservice.isLoggedIn=true;
-//       const headers = new HttpHeaders({ Authorization: 'Bearer ' + btoa(this.authservice.accessToken) });
-//       return this.httpClient.get<foodItem[]>(`${environment.baseUrl}`+'menu-items',{headers})
-//     }
-//     else return this.httpClient.get<foodItem[]>(`${environment.baseUrl}`+'menu-items')
-// }
 
 addCartItem(vehicleItemId:number,booking:Booking):Observable<any>{
   const headers = new HttpHeaders({ Authorization: 'Bearer ' +  this.authservice.accessToken});
-  return this.http.post<vehicleItem>(`${environment.baseUrl}`+'booking/'+this.authservice.username+'/'+vehicleItemId,booking,{headers})
+  return this.http.post<vehicleItem>(`${environment.baseUrl}`+'vehicle-register/booking/'+this.authservice.username+'/'+vehicleItemId,booking,{headers})
 }
 getAllCartItems():Observable<any>{
   const headers = new HttpHeaders({ Authorization: 'Bearer ' +  this.authservice.accessToken});
 
-  return this.http.get<vehicleItem>(`${environment.baseUrl}`+'booking/'+this.authservice.username,{headers})
+  return this.http.get<vehicleItem>(`${environment.baseUrl}`+'vehicle-register/booking/'+this.authservice.username,{headers})
 }
 deleteCartItem(movieItemId:number):Observable<any>{
   const headers = new HttpHeaders({ Authorization: 'Bearer ' +  this.authservice.accessToken});
-  return this.http.delete<vehicleItem>(`${environment.baseUrl}`+'booking/'+this.authservice.username+'/'+movieItemId,{headers})
+  return this.http.delete<vehicleItem>(`${environment.baseUrl}`+'vehicle-register/booking/'+this.authservice.username+'/'+movieItemId,{headers})
 }
 getPendingData():Observable<any>{
   const headers = new HttpHeaders({ Authorization: 'Bearer ' +  this.authservice.accessToken});
-  return this.http.get(`${environment.baseUrl}`+'users'+"/pendingRegistration",{headers})
+  return this.http.get(`${environment.baseUrl}`+'auth-service/users'+"/pendingRegistration",{headers})
 }
 editUserData(user:user):Observable<any>{
   const headers = new HttpHeaders({ Authorization: 'Bearer ' +  this.authservice.accessToken});
-  return this.http.post(`${environment.baseUrl}`+'users'+"/editPendingUserStatus",user,{headers})
+  return this.http.post(`${environment.baseUrl}`+'auth-service/users'+"/editPendingUserStatus",user,{headers})
 }
 
 }

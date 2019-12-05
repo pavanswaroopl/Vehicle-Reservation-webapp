@@ -4,14 +4,19 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.cognizant.mfrp.agile.api.controller.AuthenticationController;
 import com.cognizant.mfrp.agile.api.model.Vehicle;
 import com.cognizant.mfrp.agile.api.repository.VehicleRepository;
 
 @Service
 public class VehicleService {
+	private static final Logger LOGGER = LoggerFactory.getLogger(VehicleService.class);
+
 
 	@Autowired
 	private VehicleRepository vehicleRepository;
@@ -29,6 +34,9 @@ public class VehicleService {
 	}
 
 	public Vehicle newVehicle(Vehicle vehicle) {
+		vehicle.setStatus(true);
+		LOGGER.info("vehicle",vehicle);
+		
 		return vehicleRepository.save(vehicle);
 	}
 

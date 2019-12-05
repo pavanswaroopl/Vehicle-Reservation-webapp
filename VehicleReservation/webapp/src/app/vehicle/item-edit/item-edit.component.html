@@ -45,7 +45,7 @@
             <h5>
               <label for="price">Vehicle Price</label>
             </h5>
-            <input type="text" class="form-control" id="price" formControlName="price" [formControl]="price">
+            <input type="number" class="form-control" id="price" formControlName="price" [formControl]="price">
             <div  class ="text-danger" *ngIf="price.invalid && price.errors.required">
               Price per day is required.
             </div>
@@ -170,10 +170,15 @@
 
 
       <div class="row heading ">
-        <div class="col-lg-12 mt-4">
-          <button type="submit" class="btn btn-color" [disabled]="!form.valid">Submit</button>
+        <div class="col-lg-6 mt-4 right">
+          <button type="submit" class="btn btn-color" [disabled]="!form.valid">Submit</button> &nbsp; &nbsp;
+          <button (click)="delete(vehicleItem.id)" class="btn btn-outline-danger ">Delete</button>
         </div>
       </div>
+
+    
+
+     
 
     </form>
 

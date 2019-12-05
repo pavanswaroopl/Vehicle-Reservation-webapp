@@ -22,6 +22,13 @@ export class ItemEditComponent implements OnInit {
   
 
   constructor(private fb: FormBuilder,private route : ActivatedRoute,public router:Router,private vehicleService:VehicleService) { }
+
+  delete(id:number){
+    this.vehicleService.deleteVehicle(id).subscribe(data=>{this.vehicleService.getAllMenuItems();})
+  
+    window.alert("Deleted Succesfully")
+    this.router.navigate(['search-bar/'])
+  }
     
   
 
@@ -100,7 +107,7 @@ export class ItemEditComponent implements OnInit {
       })
     
     }
-
+  
 
 
 

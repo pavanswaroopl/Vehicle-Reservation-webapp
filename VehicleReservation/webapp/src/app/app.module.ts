@@ -18,6 +18,7 @@ import { AuthGaurdService } from './auth-gaurd.service';
 import { HttpClientModule } from '@angular/common/http';
 import { AddVehicleComponent } from './vehicle/add-vehicle/add-vehicle.component';
 import { ApprovalComponent } from './site/approval/approval.component';
+import { InvoiceComponent } from './invoice/invoice.component';
 
 const appRoutes: Routes = [ 
   { path: '', redirectTo: 'search-bar', pathMatch:'full' },
@@ -27,7 +28,8 @@ const appRoutes: Routes = [
   { path: 'login',component: LoginComponent},
   { path: 'search-bar',component: SearchComponent},
   { path: 'add',component: AddVehicleComponent},
-  {path:'approval',component:ApprovalComponent}
+  {path:'approval',component:ApprovalComponent},
+  {path:'invoice',component:InvoiceComponent}
 
 ];
 
@@ -45,6 +47,7 @@ const appRoutes: Routes = [
      LoginComponent,
      AddVehicleComponent,
      ApprovalComponent,
+     InvoiceComponent,
      
   ],
   imports: [

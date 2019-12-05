@@ -24,19 +24,11 @@ public class UserController {
 	@Autowired
 	private AppUserDetailsService appUserDetailsService;
 	
-	
-
 	@PostMapping
 	public boolean signup(@RequestBody @Valid User user) throws UserAlreadyExistsException {
 	
 		return appUserDetailsService.signup(user);
-
-	}
-	
-//	@GetMapping("/{id}")
-//	public Optional<User> getUser(@PathVariable int id ){
-//		return appUserDetailsService.getUser(id);
-//	}
+		}
 	
 	@GetMapping("/pendingRegistration")
 	public List<User> getPendingUsers(){

@@ -1,0 +1,55 @@
+<div class="container">
+    <div class="card">
+  <div class="card-header">
+  Invoice
+  <strong>01/01/01/2018</strong> 
+    <span class="float-right"> <strong>Status:</strong> Pending</span>
+  
+  </div>
+  <div class="card-body">
+  
+  
+  <div class="table-responsive-sm">
+  <table class="table table-striped">
+  <thead>
+  <tr>
+  <th class="center"></th>
+  <th>Vehicle</th>
+  <th>Type</th>
+  <th class="right">Total</th>
+  <th>payment</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+  <td class="center"></td>
+  <td class="left strong">{{this.bookingService.booking.vehicle.name}}</td>
+  <td class="left">{{this.bookingService.booking.vehicle.type}}</td>
+  <td class="right">{{this.bookingService.booking.price | currency:'INR'}}</td>
+  <td></td>
+  </tr>
+  <tr>
+    <td class="center"></td>
+    <td class="left strong">Total if promo05(5%) is applied</td>
+    <td class="left"></td>
+    <td class="right">{{this.price | currency:'INR'}}</td>
+    <td><button (click)="removeFromCart(this.bookingService.booking.vehicle.id)" class="btn btn-outline-success right">Pay Now</button></td>
+  </tr>
+  <tr>
+    <td class="center"></td>
+    <td class="left strong">10% discount if payment done through SBI</td>
+    <td class="left"></td>
+    <td class="right">{{this.price1 | currency:'INR'}}</td>
+    <td><button (click)="removeFromCart(this.bookingService.booking.vehicle.id)" class="btn btn-outline-success right">Pay Now</button></td>
+  </tr>
+  
+  
+  
+  </tbody>
+  </table>
+  </div>
+
+  
+  </div>
+  </div>
+  </div>

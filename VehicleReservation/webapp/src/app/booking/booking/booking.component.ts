@@ -22,8 +22,7 @@ booking:Booking;
     this.menuservice.deleteCartItem(cartId).subscribe(data=>{this.bookingService.getAllBookings()})
   }
   onSubmit(){
-    alert("Thanks! We Recieved Your Payment. Your Car is Booked");
-
+   this.router.navigate(['invoice'])
   }
 
 }

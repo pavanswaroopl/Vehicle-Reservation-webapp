@@ -44,26 +44,30 @@ export class VehicleService {
     //   return this.httpClient.get<vehicleItem[]>(`${environment.baseUrl}`+'menu-items',{headers})
     const headers = new HttpHeaders({ Authorization: 'Bearer ' +  this.authservice.accessToken});
 
-    return this.http.get<vehicleItem[]>(`${environment.baseUrl}`+'vehicle',{headers});
+    return this.http.get<vehicleItem[]>(`${environment.baseUrl}`+'vehicle-register/vehicle',{headers});
   }
   getMenuItem(id:number){
     const headers = new HttpHeaders({ Authorization: 'Bearer ' +  this.authservice.accessToken});
 
-    return this.http.get<vehicleItem>(`${environment.baseUrl}`+'vehicle/'+id,{headers})
+    return this.http.get<vehicleItem>(`${environment.baseUrl}`+'vehicle-register/vehicle/'+id,{headers})
   }
   save(vehicleItem:vehicleItem):Observable<any>{
     const headers = new HttpHeaders({ Authorization: 'Bearer ' +  this.authservice.accessToken});
-    return this.http.put<vehicleItem>(`${environment.baseUrl}`+'vehicle',vehicleItem,{headers})
+    return this.http.put<vehicleItem>(`${environment.baseUrl}`+'vehicle-register/vehicle',vehicleItem,{headers})
 
   }
   addNewVehicle(vehicleItem:vehicleItem):Observable<any>{
     const headers = new HttpHeaders({ Authorization: 'Bearer ' +  this.authservice.accessToken});
-    return this.http.post<vehicleItem>(`${environment.baseUrl}`+'vehicle',vehicleItem,{headers})
+    return this.http.post<vehicleItem>(`${environment.baseUrl}`+'vehicle-register/vehicle',vehicleItem,{headers})
   }
   getVehicleById(id:number):Observable<any>{
     const headers = new HttpHeaders({ Authorization: 'Bearer ' +  this.authservice.accessToken});
-    return this.http.get<vehicleItem>(`${environment.baseUrl}`+'vehicle/'+id,{headers})
+    return this.http.get<vehicleItem>(`${environment.baseUrl}`+'vehicle-register/vehicle/'+id,{headers})
  }
+ deleteVehicle(id:number):Observable<any>{
+  const headers = new HttpHeaders({ Authorization: 'Bearer ' +  this.authservice.accessToken});
+  return this.http.delete<vehicleItem>(`${environment.baseUrl}`+'vehicle-register/vehicle/'+id,{headers})
+}
  
   getMenu():Observable<vehicleItem[]>{
     return of(this.vehicleItem)

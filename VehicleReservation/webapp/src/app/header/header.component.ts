@@ -21,6 +21,10 @@ export class HeaderComponent implements OnInit {
   title = 'truYum';
   isLoggedIn:boolean = false;
   
+  
+  refresh(): void {
+    window.location.reload();
+}
 
   loggedIn():boolean {
     if(!this.authService.loggedInUser.loggedOut){

@@ -39,9 +39,6 @@ public class BookingController {
 	}
 	@GetMapping("/{username}")
 	public Booking viewBooking(@PathVariable String username){
-		
-//		 Vehicle vehicle = bookingService.viewBooking(username);
-		
 		User user= userRepository.findByUsername(username);
 		if(user.getBooking()!=null){
 		Booking booking= user.getBooking();

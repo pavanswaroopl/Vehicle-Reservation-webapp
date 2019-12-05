@@ -33,7 +33,7 @@ export class AuthServiceService {
     let credentials = btoa(user+':'+password);
     let headers = new HttpHeaders();
     headers = headers.set('Authorization', 'Basic '+credentials)
-    return this.http.get(this.baseUrl+"authenticate", {headers})
+    return this.http.get(this.baseUrl+"auth-service/authenticate", {headers})
     
 
   }

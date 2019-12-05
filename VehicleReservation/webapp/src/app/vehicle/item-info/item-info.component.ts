@@ -29,6 +29,7 @@ export class ItemInfoComponent implements OnInit {
   
 
   ngOnInit() {
+
     if(this.authService.loggedIn){
       this.bookingService.getAllBookings();
     }
@@ -38,6 +39,12 @@ export class ItemInfoComponent implements OnInit {
       startingDate:["",[Validators.required]],
       endingDate:["",[Validators.required]]
     })
+  }
+  delete(id:number){
+    this.vehicleService.deleteVehicle(id).subscribe(data=>{this.vehicleService.getAllMenuItems();})
+  
+    window.alert("Deleted Succesfully")
+    this.router.navigate(['add/'])
   }
   get startingDate() {
     return this.BookForm.get('startingDate');
@@ -91,5 +98,6 @@ export class ItemInfoComponent implements OnInit {
       console.log(this.clickname);
       
     }
+    
 
 }

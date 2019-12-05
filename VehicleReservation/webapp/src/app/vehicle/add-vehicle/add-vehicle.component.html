@@ -50,7 +50,7 @@
             <h5>
               <label for="price">Vehicle Price</label>
             </h5>
-            <input type="text" class="form-control" id="price" formControlName="price" [formControl]="price">
+            <input type="number" class="form-control" id="price" formControlName="price" [formControl]="price">
             <div  class ="text-danger" *ngIf="price.invalid && price.errors.required && price.touched" >
               Price per day is required.
             </div>

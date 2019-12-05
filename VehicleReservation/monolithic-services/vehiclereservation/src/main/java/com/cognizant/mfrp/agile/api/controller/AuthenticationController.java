@@ -34,11 +34,7 @@ public class AuthenticationController {
 		LOGGER.info("start");
 		LOGGER.info(authHeader);
 		Map<String, String> authmap = new HashMap<String, String>();
-		// authmap.put(generateJwt(getUser(authHeader)),getUser(authHeader));
 		authmap.put("token", generateJwt(getUser(authHeader)));
-		// String role =
-		// SecurityContextHolder.getContext().getAuthentication().getAuthorities().toArray()[0].toString();
-		
 		String username = getUser(authHeader);
 		authmap.put("username", username);
 		User user = userRepository.findByUsername(username);
@@ -86,11 +82,7 @@ public class AuthenticationController {
 	private String generateJwt(String user) {
 		JwtBuilder builder = Jwts.builder();
 		builder.setSubject(user);
-
-		// Set the token issue time as current time
 		builder.setIssuedAt(new Date());
-
-		// Set the token expiry as 20 minutes from now
 		builder.setExpiration(new Date((new Date()).getTime() + 1200000));
 		builder.signWith(SignatureAlgorithm.HS256, "secretkey");
 

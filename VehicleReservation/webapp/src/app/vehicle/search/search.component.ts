@@ -46,13 +46,12 @@ export class SearchComponent implements OnInit {
     this.vehicleService.getSubject().next(event.target.value)
   }
   sortFunction(){
-    console.log("ygfjuhg");
-    // this.filterlist=this.vehicleItem;
+    
     
     console.log(this.filterlist);
     
     if(this.sortkey=="seater"){
-      console.log("in seater");
+      
       
       this.filterlist=this.filterlist.sort((a:vehicleItem, b:vehicleItem): number =>{
         if(+a.seater>+b.seater)
@@ -62,7 +61,7 @@ export class SearchComponent implements OnInit {
       })
     }
     if(this.sortkey=="type"){
-      console.log("in type");
+      
       this.filterlist=this.filterlist.sort((a:vehicleItem, b:vehicleItem): number =>{
         if(a.type>b.type)
           return 1;
@@ -71,7 +70,7 @@ export class SearchComponent implements OnInit {
       })
     }
     if(this.sortkey=="price"){
-      console.log("in price");
+   
       this.filterlist=this.filterlist.sort((a:vehicleItem, b:vehicleItem): number =>{
         if(a.price>b.price)
           return 1;
@@ -79,7 +78,7 @@ export class SearchComponent implements OnInit {
           return -1;
       })
     }
-    console.log(this.filterlist);
+    
     
   }
   

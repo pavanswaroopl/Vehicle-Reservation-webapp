@@ -24,7 +24,7 @@ export class UserServiceService {
     console.log(NewUsers)
     this.addUsers(NewUsers).subscribe(data=>{this.userExist=data;
     if(data){
-      console.log("ijnside hcgjhfcg")
+      window.alert("Your Details are Saved Successfully !")
       this.router.navigate(['login'])
 
     }
@@ -33,6 +33,6 @@ export class UserServiceService {
   }
 
   addUsers(user:user):Observable<any>{
-    return this.http.post<user>(environment.baseUrl+'users',user);
+    return this.http.post<user>(environment.baseUrl+'auth-service/users',user);
   }
 }

@@ -177,6 +177,26 @@ public class Vehicle {
 				+ ", serviceDueDate=" + serviceDueDate + "]";
 	}
 
+	public Vehicle(int id, String name, String image, String vehicleNo, String seater, String type, float price,
+			boolean active, String branch, Date insuranceExpDate, Date lastServiceDate, Date serviceDueDate,
+			boolean status) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.image = image;
+		this.vehicleNo = vehicleNo;
+		this.seater = seater;
+		this.type = type;
+		this.price = price;
+		this.active = active;
+		this.branch = branch;
+		this.insuranceExpDate = insuranceExpDate;
+		this.lastServiceDate = lastServiceDate;
+		this.serviceDueDate = serviceDueDate;
+		this.status = status;
+		
+	}
+
 	public Vehicle() {
 	}
 	

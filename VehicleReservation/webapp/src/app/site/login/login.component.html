@@ -2,7 +2,8 @@
 	<div class="wrapper fadeInDown">
 	  <div id="formContent">
 		<h5 style="margin-top:50px;margin-block-start: 10px;"><b>Vehicle Registration System</b></h5>
-		<div class="alert alert-info mt-5 ml-5 mr-5" *ngIf="this.authService.userStatus && this.loginClicked ">User Not Approved/InValid</div>
+		<div class="alert alert-info mt-5 ml-5 mr-5" *ngIf="this.authService.userStatus && this.loginClicked ">User Not Approved/InValid details</div>
+		<div class="alert alert-info mt-5 ml-5 mr-5" *ngIf="this.loginClicked ">User Not Approved/InValid</div>
   
 		<form [formGroup]="loginForm" (submit)="onSubmit()">
 		  <div class="row mt-5 ml-5 mr-5">
